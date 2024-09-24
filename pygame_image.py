@@ -16,8 +16,11 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        x=-(tmr%800)
+        x=-(tmr%3200)
         screen.blit(bg_img, [x, 0])
+        screen.blit(pg.transform.flip(bg_img,True,False),[x+1600,0])
+        screen.blit(bg_img, [x+3200, 0])
+        screen.blit(pg.transform.flip(bg_img,True,False),[x+4800,0])
         screen.blit(kk_img,[300,200])
         pg.display.update()
         tmr += 1        
