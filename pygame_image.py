@@ -17,19 +17,21 @@ def main():
     
     tmr = 0
     while True:
+        move_x=-1
+        move_y=0
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_img_rct.move_ip((0,-1))
+            move_y+=-1
         if key_lst[pg.K_DOWN]:
-            kk_img_rct.move_ip((0,1))
+            move_y+=1
         if key_lst[pg.K_RIGHT]:
-            kk_img_rct.move_ip((2,0))
+            move_x+=2
         if key_lst[pg.K_LEFT]:
-            kk_img_rct.move_ip((-1,0))
+            move_x+=-1
         x=-(tmr%3200)
-        kk_img_rct.move_ip((-1,0))
+        kk_img_rct.move_ip((move_x,move_y))
         screen.blit(bg_img, [x, 0])
         screen.blit(pg.transform.flip(bg_img,True,False),[x+1600,0])
         screen.blit(bg_img, [x+3200, 0])
